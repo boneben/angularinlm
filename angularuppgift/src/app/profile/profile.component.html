@@ -1,0 +1,82 @@
+
+    <div class="container">
+        <div id="profile" *ngIf="user">
+          <div>
+              <h1>Welcome {{ user.firstName }} {{ user.lastName }}!</h1>
+              <span id="logout" style="float: right" (click)="logout()">Logout</span>
+          </div>
+          <div id="profile-info" class="profile-info" *ngIf="!editingInfo">
+            <fieldset>
+                <legend> Account</legend>
+                <div> {{ user.firstName }} {{ user.lastName }} | {{ user.birthDate }}</div>
+                <hr>
+                <div>
+                  <label>Email:</label><br>
+                   {{ user.email }}
+                </div>
+                <div>
+                  <label>Password:</label><br>
+                  ********
+                </div>
+                <hr>
+                <div>
+                  <label>Shippingaddress:</label>
+                  <div> {{ user.shippingAddress }}</div>
+                  <div>{{ user.shippingPostalNumber }} {{ user.shippingCity }}, {{ user.shippingCountry }}</div>
+                </div>
+                <hr>
+                <div>
+                  <label>Billingaddress:</label>
+                  <div> {{ user.billingAddress }}</div>
+                  <div>{{ user.billingPostalNumber }} {{ user.billingCity }}, {{ user.billingCountry}}</div>
+                </div>
+                <hr>
+                <button class="button dark" (click)="editingInfo = true"> Change</button>
+            </fieldset>
+          </div>
+      
+          <form [formGroup]="editForm" (submit)="updateInfo()" id="register-form" *ngIf="editingInfo" class="container">
+              <fieldset>
+                  <legend> Account</legend>
+                  <div>
+                    <input class="edit-input" type="text" formControlName="firstName" placeholder="Firstname">
+                    <input class="edit-input" type="text" formControlName="lastName" placeholder="Lastname">
+                  </div>
+                  <hr>
+                  <div>
+                    <input class="edit-input full-w" type="email" formControlName="email" placeholder="Email">
+                  </div>
+                  <div>
+                    <input class="edit-input" type="password" placeholder="New password" formControlName="password">
+                    </div>
+                  <hr>
+                  <div>
+                    <div>
+                      <input class="edit-input" type="text" formControlName="shippingAddress" placeholder="Shippingaddress">
+                    </div>
+                    <div>
+                        <input class="edit-input" type="text" formControlName="shippingPostalNumber" placeholder="Zipcode">
+                        <input class="edit-input" type="text" formControlName="shippingCity" placeholder="City">
+                        <input class="edit-input" type="text" formControlName="shippingCountry" placeholder="Country">
+                    </div>
+                  </div>
+                  <hr>
+                  <div>
+                    <div>
+                      <input class="edit-input" type="text" formControlName="billingAddress" placeholder="Billingaddress">
+                    </div>
+                    <div>
+                      <input class="edit-input" type="text" formControlName="billingPostalNumber" placeholder="Zipcode">
+                      <input class="edit-input" type="text" formControlName="billingCity" placeholder="City">
+                      <input class="edit-input" type="text" formControlName="billingCountry" placeholder="Country">
+                    </div>
+                  </div>
+                  <hr>
+                  <div id="button-container">
+                    <button class="button success" type="submit"> Save</button>
+                    <button class="button dark" type="button" (click)="cancel()"> Cancel</button>
+                  </div>
+              </fieldset>
+            </form>
+          </div>
+    </div>

@@ -1,0 +1,22 @@
+.nav-item {
+    padding: 5px;
+}
+
+.nav-item a {
+    color: darkorange;
+    font-size: 1.1rem;
+    border-radius: 5%;
+}
+
+.nav-item a:hover {
+    font-weight: bold;
+    background-color: darkorange;
+}
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+.navbar-nav {
+    margin-left: 38%;
+}
